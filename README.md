@@ -7,7 +7,8 @@ This module
 - is written only in JavaScript
 
 ## Requirements
-This module has not yet been tested except for:
+This module has not yet been tested  
+in every version except for:
   - `react`: `16.0.0-alpha.12`
   - `react-native`: `0.47.1`
 
@@ -18,7 +19,7 @@ $ npm install react-native-auto-expanding-webview
 
 ## Example
 ```jsx
-import { ScrollView, Text, ActivityIndicator } from 'react-native';
+import { ScrollView, Text, ActivityIndicator, Dimensions } from 'react-native';
 import AutoExpandingWebView from 'react-native-auto-expanding-webview';
 
 const embedHtml = (html) => `

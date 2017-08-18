@@ -1,11 +1,11 @@
 {
   "name": "react-native-auto-expanding-webview",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./AutoExpandingWebView.js",
   "author": "Sho Miyamoto",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shqld/react-native-autoexpand-webview.git"
+    "url": "git+https://github.com/shqld/react-native-auto-expanding-webview.git"
   },
   "keywords": [
     "react-native-component",
