@@ -1,7 +1,10 @@
 # react-native-auto-expanding-webview
 Auto-expanding WebView for React Native
 
-## Why this?
+## Feature
+This can be nested in `ScrollView`
+
+### Why this?
 This module
 - fully accepts all props of `WebView` in React Native for customizability
 - is written only in JavaScript
@@ -12,7 +15,7 @@ in every version except for:
   - `react`: `16.0.0-alpha.12`
   - `react-native`: `0.47.1`
 
-## Install
+## Installation
 ```sh
 $ npm install react-native-auto-expanding-webview
 ```
