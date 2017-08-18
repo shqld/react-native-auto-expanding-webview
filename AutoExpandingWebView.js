@@ -7,7 +7,7 @@ const CONTENT_HEIGHT_MESSAGE = 'CONTENT_HEIGHT_MESSAGE';
 const getContentHeightScript = `
   function sendHeight() {
     if (window.postMessage.length === 1) {
-      var contentHeight = document.body.scrollHeight;
+      var contentHeight = document.body.clientHeight;
       window.postMessage('${CONTENT_HEIGHT_MESSAGE}' + contentHeight);
     } else {
       setTimeout(sendHeight, 100);
@@ -43,7 +43,10 @@ export default class AutoExpandingWebView extends React.PureComponent {
 
     if (data.indexOf(CONTENT_HEIGHT_MESSAGE) !== -1) {
       const contentHeight = Number(data.replace(CONTENT_HEIGHT_MESSAGE, ''));
-      this.setState({ contentHeight }, this.props.didLoad);
+      this.setState(
+        { contentHeight },
+        () => this.props.didLoad(contentHeight)
+      );
       return;
     }
 
@@ -61,17 +64,17 @@ export default class AutoExpandingWebView extends React.PureComponent {
   }
 
   render() {
-    const { injectedJavaScript, style } = this.props;
-
     return (
       <View>
         { this.renderLoadingView() }
         <WebView
           {...this.props}
-          style={[style, { height: this.state.contentHeight }]}
           ref={(webview) => { this.webview = webview; }}
+          style={[this.props.style, { height: this.state.contentHeight }]}
           onMessage={this.onMessage}
-          injectedJavaScript={getContentHeightScript + injectedJavaScript}
+          injectedJavaScript={getContentHeightScript + this.props.injectedJavaScript}
+          scrollEnabled={false}
+          scalesPageToFit={false}
           javaScriptEnabled
         />
       </View>
