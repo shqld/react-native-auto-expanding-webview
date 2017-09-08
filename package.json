@@ -1,6 +1,6 @@
 {
   "name": "react-native-auto-expanding-webview",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./AutoExpandingWebView.js",
   "author": "Sho Miyamoto",
   "repository": {
