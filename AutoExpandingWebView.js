@@ -25,7 +25,7 @@ export default class AutoExpandingWebView extends React.PureComponent {
       PropTypes.element,
       PropTypes.func
     ]),
-    didLoad: PropTypes.func,
+    onLoad: PropTypes.func,
   };
 
   constructor(props) {
@@ -45,7 +45,9 @@ export default class AutoExpandingWebView extends React.PureComponent {
       const contentHeight = Number(data.replace(CONTENT_HEIGHT_MESSAGE, ''));
       this.setState(
         { contentHeight },
-        () => this.props.didLoad(contentHeight)
+        () => {
+          this.props.onLoad && this.props.onLoad(contentHeight);
+        }
       );
       return;
     }

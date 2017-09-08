@@ -20,6 +20,10 @@ in every version except for:
 $ npm install react-native-auto-expanding-webview
 ```
 
+## Props
+- `LoadingViewComponent`: `ReactClass<any>` | `React.Element<any>`
+- `onLoad`: `(contentHeight) => void`
+
 ## Example
 ```jsx
 import { ScrollView, Text, ActivityIndicator, Dimensions } from 'react-native';
@@ -61,7 +65,3 @@ const ArticleView = ({ article }) => (
   </ScrollView>
 );
 ```
-
-## Props
-- `LoadingViewComponent`: `ReactClass<any>` | `React.Element<any>`
-- `didLoad`: `(contentHeight) => void`
