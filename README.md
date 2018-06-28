@@ -41,7 +41,7 @@ const Content = ({ children }) => (
     source={{ html: embedHtml(children) }}
     style={{ width: Dimensions.get('screen').width }}
     LoadingViewComponent={ActivityIndicator}
-    didLoad={contentHeight => console.log(contentHeight)}
+    onLoad={contentHeight => console.log(contentHeight)}
   />
 );
 
