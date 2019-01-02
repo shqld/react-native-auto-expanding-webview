@@ -7,7 +7,7 @@ const CONTENT_HEIGHT_MESSAGE = 'CONTENT_HEIGHT_MESSAGE';
 const getContentHeightScript = `
   function sendHeight() {
     if (window.postMessage.length === 1) {
-      var contentHeight = document.body.clientHeight;
+      var contentHeight = document.body.scrollHeight;
       window.postMessage('${CONTENT_HEIGHT_MESSAGE}' + contentHeight);
     } else {
       setTimeout(sendHeight, 100);
