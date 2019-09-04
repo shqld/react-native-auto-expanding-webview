@@ -1,11 +1,10 @@
 {
   "name": "react-native-auto-expanding-webview",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./AutoExpandingWebView.js",
-  "author": "Sho Miyamoto",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shqld/react-native-auto-expanding-webview.git"
+    "url": "git+https://github.com/dicamilloj/react-native-auto-expanding-webview.git"
   },
   "keywords": [
     "react-native-component",
@@ -16,5 +15,8 @@
     "html",
     "htmlview"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native-webview": "5.0.0"
+  }
 }

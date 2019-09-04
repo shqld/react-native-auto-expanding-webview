@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, WebView, ViewPropTypes } from 'react-native';
+import { View, ViewPropTypes } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 const CONTENT_HEIGHT_MESSAGE = 'CONTENT_HEIGHT_MESSAGE';
 
 const getContentHeightScript = `
-  function sendHeight() {
-    if (window.postMessage.length === 1) {
-      var contentHeight = document.body.scrollHeight;
-      window.postMessage('${CONTENT_HEIGHT_MESSAGE}' + contentHeight);
-    } else {
-      setTimeout(sendHeight, 100);
-    }
-  };
-  sendHeight();
+  (function sendHeight() {
+    var contentHeight = document.body.scrollHeight;
+    window.ReactNativeWebview.postMessage('${CONTENT_HEIGHT_MESSAGE}' + contentHeight);
+  })();
 `;
 
 export default class AutoExpandingWebView extends React.PureComponent {
@@ -37,6 +33,10 @@ export default class AutoExpandingWebView extends React.PureComponent {
 
     this.onMessage = this.onMessage.bind(this);
   }
+
+  onLoad = () => {
+    this.webview.injectJavaScript(getContentHeightScript + this.props.injectedJavaScript);
+  };
 
   onMessage(event) {
     const data = event.nativeEvent.data;
@@ -74,7 +74,7 @@ export default class AutoExpandingWebView extends React.PureComponent {
           ref={(webview) => { this.webview = webview; }}
           style={[this.props.style, { height: this.state.contentHeight }]}
           onMessage={this.onMessage}
-          injectedJavaScript={getContentHeightScript + this.props.injectedJavaScript}
+          onLoad={this.onLoad}
           scrollEnabled={false}
           scalesPageToFit={false}
           javaScriptEnabled
